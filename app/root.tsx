@@ -12,10 +12,14 @@ import {
   useSubmit,
 } from '@remix-run/react';
 import appStylesHref from './app.css';
-import type { LinksFunction, LoaderArgs } from '@remix-run/node';
+import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { createEmptyContact, getContacts } from '~/data';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+
+export const meta: MetaFunction = () => {
+  return [{ title: 'Remix Contacts' }];
+};
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
@@ -77,7 +81,7 @@ export default function App() {
                 defaultValue={q || ''}
                 className={searching ? 'loading' : ''}
               />
-              <div id='search-spinner' aria-hidden hidden={!searching} />
+              <div id='search-spinner' role='status' hidden={!searching} />
             </Form>
             <Form method='post'>
               <button type='submit'>New</button>
