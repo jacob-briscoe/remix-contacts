@@ -48,6 +48,7 @@ export default function EditContact() {
       <label>
         <span>Twitter</span>
         <input
+          aria-label='Twitter handle'
           defaultValue={contact.twitter}
           name='twitter'
           placeholder='@jack'
@@ -66,7 +67,12 @@ export default function EditContact() {
       </label>
       <label>
         <span>Notes</span>
-        <textarea defaultValue={contact.notes} name='notes' rows={6} />
+        <textarea
+          defaultValue={contact.notes}
+          name='notes'
+          rows={6}
+          aria-label='Notes'
+        />
       </label>
       <p>
         <button type='submit'>Save</button>
